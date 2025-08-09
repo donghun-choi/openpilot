@@ -6,13 +6,16 @@ Press 's' to request a small left steering torque and 'd' for right.
 This uses the Kia K5/Hyundai LKAS11 message (0x340).
 """
 
+import select
 import sys
 import termios
 import tty
+import time
 
 BUS = 0
 STEER_MAX = 1023
-STEER_STEP = 200
+STEER_STEP = 300
+PERIOD_S = 1 / 50  # 50Hz like openpilot
 
 
 def checksum(data: bytes) -> int:
@@ -45,15 +48,18 @@ def build_lkas11(torque: int, counter: int, steer_req: bool = True) -> bytes:
   return bytes(data)
 
 
-def getch() -> str:
+def read_key(timeout: float) -> str | None:
+  """Return a pressed key or None if no key before timeout."""
   fd = sys.stdin.fileno()
   old = termios.tcgetattr(fd)
   try:
-    tty.setraw(fd)
-    ch = sys.stdin.read(1)
+    tty.setcbreak(fd)
+    r, _, _ = select.select([sys.stdin], [], [], timeout)
+    if r:
+      return sys.stdin.read(1)
+    return None
   finally:
     termios.tcsetattr(fd, termios.TCSADRAIN, old)
-  return ch
 
 
 def main() -> None:
@@ -61,21 +67,23 @@ def main() -> None:
 
   panda = Panda()
   counter = 0
+  torque = 0
   print("Press 's' for left, 'd' for right, 'q' to quit")
   while True:
-    key = getch()
+    key = read_key(PERIOD_S)
     if key == 's':
       torque = -STEER_STEP
     elif key == 'd':
       torque = STEER_STEP
     elif key == 'q':
       break
-    else:
-      continue
+    elif key is not None:
+      torque = 0
 
-    msg = build_lkas11(torque, counter)
+    msg = build_lkas11(torque, counter, steer_req=torque != 0)
     panda.can_send(0x340, msg, BUS)
     counter = (counter + 1) % 16
+    time.sleep(PERIOD_S)
 
 
 if __name__ == "__main__":
