@@ -4,15 +4,16 @@ Keyboard based lateral control using a Panda connected over USB.
 
 Press 's' to request a small left steering torque and 'd' for right.
 This uses the Kia K5/Hyundai LKAS11 message (0x340).
+Use --bus to send LKAS11 on the bus where EPS messages are observed.
 """
 
+import argparse
 import select
 import sys
 import termios
-import tty
 import time
+import tty
 
-BUS = 0
 STEER_MAX = 1023
 STEER_STEP = 300
 PERIOD_S = 1 / 50  # 50Hz like openpilot
@@ -63,6 +64,11 @@ def read_key(timeout: float) -> str | None:
 
 
 def main() -> None:
+  parser = argparse.ArgumentParser(description=__doc__)
+  parser.add_argument("--bus", type=int, default=0,
+                      help="CAN bus to send LKAS11 on (default: 0)")
+  args = parser.parse_args()
+
   from panda import Panda
 
   panda = Panda()
@@ -81,7 +87,7 @@ def main() -> None:
       torque = 0
 
     msg = build_lkas11(torque, counter, steer_req=torque != 0)
-    panda.can_send(0x340, msg, BUS)
+    panda.can_send(0x340, msg, args.bus)
     counter = (counter + 1) % 16
     time.sleep(PERIOD_S)
 
