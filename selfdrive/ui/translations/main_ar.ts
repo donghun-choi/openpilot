@@ -483,10 +483,6 @@ Firehose Mode allows you to maximize your training data uploads to improve openp
         <translation>يتم تنزيل تحديث لنظام تشغيل جهازك في الخلفية. سيطلَب منك التحديث عندما يصبح جاهزاً للتثبيت.</translation>
     </message>
     <message>
-        <source>NVMe drive not mounted.</source>
-        <translation>محرك NVMe غير مثبَّت.</translation>
-    </message>
-    <message>
         <source>openpilot was unable to identify your car. Your car is either unsupported or its ECUs are not recognized. Please submit a pull request to add the firmware versions to the proper vehicle. Need help? Join discord.comma.ai.</source>
         <translation>لم يكن openpilot قادراً على تحديد سيارتك. إما أن تكون سيارتك غير مدعومة أو أنه لم يتم التعرف على وحدة التحكم الإلكتروني (ECUs) فيها. يرجى تقديم طلب سحب من أجل إضافة نسخ برمجيات ثابتة إلى السيارة المناسبة. هل تحتاج إلى أي مساعدة؟ لا تتردد في التواصل مع doscord.comma.ai.</translation>
     </message>
@@ -507,7 +503,7 @@ Firehose Mode allows you to maximize your training data uploads to improve openp
         <translation type="unfinished">تأخير التحديث</translation>
     </message>
     <message>
-        <source>openpilot has detected excessive %1 actuation. This may be due to a software bug. Please contact support at https://comma.ai/support.</source>
+        <source>openpilot detected excessive %1 actuation on your last drive. Please contact support at https://comma.ai/support and share your device&apos;s Dongle ID for troubleshooting.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -698,111 +694,6 @@ Firehose Mode allows you to maximize your training data uploads to improve openp
     <message>
         <source>Firehose</source>
         <translation>خرطوم الحريق</translation>
-    </message>
-</context>
-<context>
-    <name>Setup</name>
-    <message>
-        <source>WARNING: Low Voltage</source>
-        <translation>تحذير: الجهد منخفض</translation>
-    </message>
-    <message>
-        <source>Power your device in a car with a harness or proceed at your own risk.</source>
-        <translation>شغل جهازك في السيارة عن طريق شرطان التوصيل، أو تابع على مسؤوليتك.</translation>
-    </message>
-    <message>
-        <source>Power off</source>
-        <translation>إيقاف التشغيل</translation>
-    </message>
-    <message>
-        <source>Continue</source>
-        <translation>متابعة</translation>
-    </message>
-    <message>
-        <source>Getting Started</source>
-        <translation>البدء</translation>
-    </message>
-    <message>
-        <source>Before we get on the road, let’s finish installation and cover some details.</source>
-        <translation>قبل أن ننطلق في الطريق، دعنا ننتهي من التثبيت ونغطي بعض التفاصيل.</translation>
-    </message>
-    <message>
-        <source>Connect to Wi-Fi</source>
-        <translation>الاتصال بشبكة الواي فاي</translation>
-    </message>
-    <message>
-        <source>Back</source>
-        <translation>السابق</translation>
-    </message>
-    <message>
-        <source>Continue without Wi-Fi</source>
-        <translation>المتابعة بدون شبكة الواي فاي</translation>
-    </message>
-    <message>
-        <source>Waiting for internet</source>
-        <translation>بانتظار الاتصال بالإنترنت</translation>
-    </message>
-    <message>
-        <source>Enter URL</source>
-        <translation>أدخل رابط URL</translation>
-    </message>
-    <message>
-        <source>for Custom Software</source>
-        <translation>للبرامج المخصصة</translation>
-    </message>
-    <message>
-        <source>Downloading...</source>
-        <translation>يتم الآن التنزيل...</translation>
-    </message>
-    <message>
-        <source>Download Failed</source>
-        <translation>فشل التنزيل</translation>
-    </message>
-    <message>
-        <source>Ensure the entered URL is valid, and the device’s internet connection is good.</source>
-        <translation>تأكد من أن رابط URL الذي أدخلته صالح، وأن اتصال الجهاز بالإنترنت جيد.</translation>
-    </message>
-    <message>
-        <source>Reboot device</source>
-        <translation>إعادة التشغيل</translation>
-    </message>
-    <message>
-        <source>Start over</source>
-        <translation>البدء من جديد</translation>
-    </message>
-    <message>
-        <source>Something went wrong. Reboot the device.</source>
-        <translation>حدث خطأ ما. أعد التشغيل الجهاز.</translation>
-    </message>
-    <message>
-        <source>No custom software found at this URL.</source>
-        <translation>لم يتم العثور على برنامج خاص لعنوان URL ها.</translation>
-    </message>
-    <message>
-        <source>Select a language</source>
-        <translation>اختر لغة</translation>
-    </message>
-    <message>
-        <source>Choose Software to Install</source>
-        <translation>اختر البرنامج للتثبيت</translation>
-    </message>
-    <message>
-        <source>openpilot</source>
-        <translation>openpilot</translation>
-    </message>
-    <message>
-        <source>Custom Software</source>
-        <translation>البرمجيات المخصصة</translation>
-    </message>
-    <message>
-        <source>WARNING: Custom Software</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Use caution when installing third-party software. Third-party software has not been tested by comma, and may cause damage to your device and/or vehicle.
-
-If you&apos;d like to proceed, use https://flash.comma.ai to restore your device to a factory state later.</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
